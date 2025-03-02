@@ -51,6 +51,10 @@ The Gold layer was carefully designed to balance storage efficiency and query pe
   - Includes start_year and end_year columns denoting the period of validity for each row
   - Supports historical plan attribute analysis without excessive duplication
 
+### 4. Pipeline DAG
+The pipeline was run using Databricks workflows.
+![Image Alt](https://github.com/Rabago85/databricks_project/blob/188ec05ce09d1b1d34f8cf990e3b9fbfb7b9f952/dag.jpg)
+
 ## SQL Analysis & Results
 Several SQL queries were executed to analyze trends in health insurance rates, leveraging the efficient Gold-layer design.
 
