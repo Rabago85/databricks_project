@@ -14,6 +14,9 @@ Provided by the Centers for Medicare & Medicaid Services (CMS), these datasets i
 - **Gross Domestic Product (GDP) by State (2005 - 2024)** :
 Sourced from the Bureau of Economic Analysis (BEA), this dataset provides state-level GDP changes, reflecting economic growth trends across the U.S.
 
+## Governance with Unity Catalog
+This project implements data governance using Databricks Unity Catalog, ensuring secure and efficient management of data access, lineage, and compliance.
+
 ## Data Workflow
 
 ### 1. Bronze Layer (Raw Data Ingestion with Initial Preprocessing)
@@ -31,6 +34,12 @@ The Bronze tables serve as the foundation of the pipeline, storing raw data inge
   - Standardized BusinessYear to an integer type
   - Filtered out null or invalid values in key columns like PlanId and Rate
   - Ensured all age values were properly formatted
+
+- **state_gdp_bronze**:
+  - The smallest dataset in the pipeline
+  - Separates non-quarter columns (e.g., metadata fields) from quarter columns, which contain time-based financial data in the format "year:quarter"
+  - Reshapes the dataset from a wide format (multiple quarter columns) into a long format 
+  - Filters records to include only rows where Unit is "Millions of current dollars"
 
 ### 2. Silver Layer (Refined Data with Enhanced Structure)
 Once the raw data was cleaned in the Bronze layer, the Silver layer transformed it further to enhance usability and enforce data integrity.
@@ -110,10 +119,10 @@ Several SQL queries were executed to analyze trends in health insurance rates, l
    - Implement partitioning, bucketing, and indexing to improve SQL query performance
 
 2. **Better Modeling in the Gold Layer**
-   - Investigate alternative ways to model the gold layer that could simplify SQL queries
+   - Investigate alternative ways to model the gold layer that could simplify SQL queries.  The analysis queries used more CTE's than anticipated, so investigting more refined modeling could help for simplified downstream queries
 
 3. **Using Views for Analysis**
-   - Introduce views to abstract away complex SQL logic for easier analyst access
+   - Introduce views in the analysis layer to abstract away complex SQL logic for easier analyst access
 
 ## Technologies Used
 
@@ -124,4 +133,4 @@ Several SQL queries were executed to analyze trends in health insurance rates, l
 - Delta Lake (Storage & Transaction Management)
 
 ## Conclusion
-By leveraging structured data modeling and efficient ETL practices, this pipeline optimizes storage and query performance. The use of cumulative fact tables and SCD2 dimensions has significantly reduced data volume while maintaining analytical integrity. Future improvements will focus on further optimizing Spark queries, refining Gold-layer modeling, and simplifying analysis workflows for end-users.
+This pipeline is designed to keep storage efficient and queries fast by using structured data modeling and smart ETL practices. By implementing cumulative fact tables and SCD2 dimensions, we've cut down on data volume without losing important historical insights. Moving forward, the focus will be on fine-tuning Spark queries, improving the Gold-layer model, and making it easier for end-users to analyze the data.
