@@ -63,7 +63,9 @@ The Gold layer was carefully designed to balance storage efficiency and query pe
 
 - **rates_fact** (Cumulative Fact Table):
   - Rates were grouped by PlanId and StateCode, then stored as an array of historical rate values
-  - Reduced row count from 221,826 to 15,200 while preserving time-series analysis capabilities
+  - The array stored bucketed rates for different age groups, as well as the year
+  - This approach followed cumulative table design, looping through each years data and appending to the array, with each row in the final year containing all plans with the cumulated rate data
+  - Reduced row count from 221,826 to 15,200 while preserving time-series analysis capabilities, a reduction of 93.15 rows
   - Each row contains an array of rate values per age group over multiple years
 
 - **plans_dim_scd** (Slowly Changing Dimension Type 2 for Plans):
@@ -85,7 +87,7 @@ The pipeline was run using Databricks workflows.
 ![Image Alt](https://github.com/Rabago85/databricks_project/blob/188ec05ce09d1b1d34f8cf990e3b9fbfb7b9f952/dag.jpg)
 
 ## SQL Analysis & Results
-Several SQL queries were executed to analyze trends in health insurance rates, leveraging the efficient Gold-layer design.
+Several SQL queries were executed to analyze trends in health insurance rates, leveraging the efficient Gold-layer design.  In order to use the cumulative rates_fact table, the sql queries had to handle explode and unpivot logic.
 
 ### Key Insights:
 
