@@ -50,6 +50,15 @@ The Gold layer was carefully designed to balance storage efficiency and query pe
   - Tracks plan attributes that change over time (e.g., MetalLevel, PlanType)
   - Includes start_year and end_year columns denoting the period of validity for each row
   - Supports historical plan attribute analysis without excessive duplication
+ 
+- **state_gdp_dim** :
+  - Contains data related to the average GDP of different states over various business years
+  - Serves as a reference for analyzing the economic performance of states over time
+  - The table includes information on state codes, business years, and the average GDP values
+  - Essential for tracking and comparing the economic growth of states within a specific timeframe
+
+- **Gold Layer ERD** :
+![Image Alt](https://github.com/Rabago85/databricks_project/blob/896e31c6d5163bce7ca2e26614cda32576a816a5/erd.jpg)
 
 ### 4. Pipeline DAG
 The pipeline was run using Databricks workflows.
@@ -64,21 +73,25 @@ Several SQL queries were executed to analyze trends in health insurance rates, l
    - PPO plans consistently had the highest average rates, followed by POS, EPO, and HMO plans
    - PPO plans saw the most significant increase in rates post-2021
    - HMO plans remained the lowest-cost option across all years
+![Image Alt](https://github.com/Rabago85/databricks_project/blob/896e31c6d5163bce7ca2e26614cda32576a816a5/y_o_y_rate_by_plan_type.jpg)
 
 2. **New vs. Existing Plans**:
    - New plans initially had competitive rates but increased at a steeper rate over time
    - New plans overtook existing plan costs by 2024
    - Suggests new plans might start with lower rates to attract enrollees
+![Image Alt](https://github.com/Rabago85/databricks_project/blob/896e31c6d5163bce7ca2e26614cda32576a816a5/y_o_y_rate_by_new_or_existing.jpg)
 
 3. **Pandemic Impact**:
    - Clear upward shift in rates post-pandemic (2021 and beyond)
    - Most pronounced increase between 2022 and 2024
    - Reinforces impact of post-pandemic economic conditions on premium hikes
+![Image Alt](https://github.com/Rabago85/databricks_project/blob/896e31c6d5163bce7ca2e26614cda32576a816a5/y_o_y_rate_by_pandemic_era.jpg)
 
 4. **Fairness Index by State**:
    - Significant disparities across states
    - Some states exhibit consistently high fairness scores, while others fluctuate
    - Low fairness scores indicate potential regulatory inconsistencies or market-driven pricing disparities
+![Image Alt](https://github.com/Rabago85/databricks_project/blob/896e31c6d5163bce7ca2e26614cda32576a816a5/y_o_y_fairness_index.jpg)
 
 ## Areas for Improvement
 
