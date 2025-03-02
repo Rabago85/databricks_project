@@ -100,7 +100,7 @@ Several SQL queries were executed to analyze trends in health insurance rates, l
 2. **New vs. Existing Plans**:
    - New plans initially had competitive rates but increased at a steeper rate over time
    - New plans overtook existing plan costs by 2024
-   - Suggests new plans might start with lower rates to attract enrollees
+   - Suggests new plans might start with lower rates to attract enrollees pre-pandemic, not as important in 2024
 ![Image Alt](https://github.com/Rabago85/databricks_project/blob/896e31c6d5163bce7ca2e26614cda32576a816a5/y_o_y_rate_by_new_or_existing.jpg)
 
 3. **Pandemic Impact**:
@@ -110,8 +110,11 @@ Several SQL queries were executed to analyze trends in health insurance rates, l
 ![Image Alt](https://github.com/Rabago85/databricks_project/blob/896e31c6d5163bce7ca2e26614cda32576a816a5/y_o_y_rate_by_pandemic_era.jpg)
 
 4. **Fairness Index by State**:
+   - Calculated using the following:
+![Image Alt](https://github.com/Rabago85/databricks_project/blob/655a480eb8bb11ec8bc48d18dbd6aee61a515f98/fairness_index.jpg)
+
    - Significant disparities across states
-   - Some states exhibit consistently high fairness scores, while others fluctuate
+   - Some states exhibit consistently high fairness scores (Texas), while others fluctuate
    - Low fairness scores indicate potential regulatory inconsistencies or market-driven pricing disparities
 ![Image Alt](https://github.com/Rabago85/databricks_project/blob/896e31c6d5163bce7ca2e26614cda32576a816a5/y_o_y_fairness_index.jpg)
 
