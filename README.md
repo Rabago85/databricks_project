@@ -3,6 +3,17 @@
 ## Overview
 This project implements a data pipeline in Databricks to process, transform, and analyze health insurance rate data efficiently. The pipeline follows a Medallion architecture (Bronze, Silver, Gold) to optimize data storage, transformation, and querying.
 
+## Data Scources
+This project utilizes publicly available health insurance and economic data from two sources:
+
+- **Health Insurance Exchange Public Use Files (Exchange PUFs) (2018-2024)** : 
+Provided by the Centers for Medicare & Medicaid Services (CMS), these datasets include plan-level details on premiums, copayments, deductibles, and other attributes for Qualified Health Plans (QHPs) and Stand-Alone Dental Plans (SADPs) offered through the Health Insurance Exchanges. The data covers states using the Federally Facilitated Exchanges (FFE) and those with State-based Exchanges on the federal platform.
+  - Rate PUF: Contains plan rates based on factors such as age, tobacco use, and location.
+  - Plan Attributes PUF: Includes information on deductibles, out-of-pocket maximums, and other key plan characteristics.
+
+- **Gross Domestic Product (GDP) by State (2005 - 2024)** :
+Sourced from the Bureau of Economic Analysis (BEA), this dataset provides state-level GDP changes, reflecting economic growth trends across the U.S.
+
 ## Data Workflow
 
 ### 1. Bronze Layer (Raw Data Ingestion with Initial Preprocessing)
